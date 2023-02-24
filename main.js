@@ -1,7 +1,7 @@
 // fetch data form server.
 airEngine = async (city) => {
   let response = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=1a38bbe1a56f4e3899e93626232402&q=${city}&aqi=yes`,
+    `https://api.weatherapi.com/v1/current.json?key=1a38bbe1a56f4e3899e93626232402&q=${city}&aqi=yes`,
     {
       method: "POST",
     }
