@@ -1,3 +1,4 @@
+// fetch data form server.
 airEngine = async (city) => {
   let response = await fetch(
     `http://api.weatherapi.com/v1/current.json?key=1a38bbe1a56f4e3899e93626232402&q=${city}&aqi=yes`,
@@ -7,12 +8,15 @@ airEngine = async (city) => {
   );
 
   let data = await response.json();
+  // Alert when location not found.
   if (data.location == undefined) {
     alert("Location Not Found");
   }
   printer(data);
 };
+//This function will handle all DOM operations.
 printer = (data) => {
+  // To Save Time and ride from writing more code I named every id to response keys name and looped throw it but conditions need more improvements.
   idArray = [
     "name",
     "country",
@@ -41,6 +45,7 @@ printer = (data) => {
       }
     }
   }
+  // Weather Condition
   document.getElementById("condition").innerHTML = `<img
   src="http:${data.current.condition.icon}"
   alt=""
@@ -49,6 +54,7 @@ printer = (data) => {
 />
 <span class="text-4xl">${data.current.condition.text}</span>`;
   airQ = parseInt(data["current"]["air_quality"]["us-epa-index"]);
+  // Air Quality Meatier
   switch (airQ) {
     case 1:
       document.getElementById("us-epa-index").innerText = "Good";
@@ -71,8 +77,10 @@ printer = (data) => {
       break;
   }
 };
+// Trigger search button event.
 trigu = () => {
   let search = document.getElementById("search").value;
+  // Search Validation
   if (search !== undefined && isNaN(search)) {
     airEngine(search);
   } else {

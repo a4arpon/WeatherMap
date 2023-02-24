@@ -1,7 +1,9 @@
 # Weather Clock
 
-A dynamic open source Weather clock by usng JavaScript written by me.
-I will made a documetetion in this project soon.
+A dynamic open source Weather App by using JavaScript written by me.
+I will made a documentation in this project soon.
+
+## You can improve it if you want and don't forget to star my repo on github. 
 
 ## Feedback
 
