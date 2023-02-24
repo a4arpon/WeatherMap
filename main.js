@@ -7,6 +7,9 @@ airEngine = async (city) => {
   );
 
   let data = await response.json();
+  if (data.location == undefined) {
+    alert("Location Not Found");
+  }
   printer(data);
 };
 printer = (data) => {
@@ -38,6 +41,13 @@ printer = (data) => {
       }
     }
   }
+  document.getElementById("condition").innerHTML = `<img
+  src="http:${data.current.condition.icon}"
+  alt=""
+  height="72px"
+  width="72px"
+/>
+<span class="text-4xl">${data.current.condition.text}</span>`;
   airQ = parseInt(data["current"]["air_quality"]["us-epa-index"]);
   switch (airQ) {
     case 1:
@@ -61,4 +71,11 @@ printer = (data) => {
       break;
   }
 };
-airEngine("Dhaka");
+trigu = () => {
+  let search = document.getElementById("search").value;
+  if (search !== undefined && isNaN(search)) {
+    airEngine(search);
+  } else {
+    alert("Valid city should be entered");
+  }
+};

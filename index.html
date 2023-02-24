@@ -11,31 +11,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>TailwindCSS</title>
   </head>
-  <body>
+  <body onload="airEngine('Dhaka');">
     <header>
       <nav class="px-3 py-2">
-        <div class="navbar bg-base-100 drop-shadow-xl">
+        <div class="navbar bg-base-100 flex-col md:flex-row">
           <div class="flex-1">
-            <a class="btn btn-ghost normal-case text-xl">Weather Machine</a>
+            <a href="https://arpon-svg.github.io/" target="_blank" class="btn btn-ghost normal-case text-3xl">Weather Clock</a>
           </div>
-          <div class="flex-none">
-            <div class="dropdown dropdown-end">
-              <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
-                  <img src="./images/model.png" />
-                </div>
-              </label>
-              <ul
-                tabindex="0"
-                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a> Profile </a>
-                </li>
-                <li><a>Settings</a></li>
-                <li><a>Logout</a></li>
-              </ul>
+          <div class="flex-none gap-2">
+            <div class="form-control">
+              <input
+                type="text"
+                placeholder="Enter City Here"
+                class="input input-bordered"
+                id="search"
+              />
             </div>
+            <button
+              class="btn btn-primary normal-case text-lg"
+              onclick="trigu()"
+            >
+              Search
+            </button>
           </div>
         </div>
       </nav>
@@ -45,28 +42,28 @@
         <!-- Location Details Section Start -->
         <h1 class="text-4xl md:text-6xl text-center mb-5">Weather Details</h1>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+          <div class="card bg-green-500 text-white shadow-xl md:col-span-2">
+            <div class="card-body text-center flex">
+              <p class="text-3xl text-gray-600">Country</p>
+              <p id="country" class="text-4xl">Loading...</p>
+            </div>
+          </div>
           <div class="card bg-emerald-600 text-white shadow-xl">
             <div class="card-body text-center">
               <p class="text-2xl text-gray-300">City Name</p>
               <p class="text-4xl" id="name">Loading...</p>
             </div>
           </div>
-          <div class="card bg-green-500 text-white shadow-xl md:col-span-2">
-            <div class="card-body text-center flex">
-              <p class="text-3xl">Country</p>
-              <p id="country" class="text-4xl">Loading...</p>
-            </div>
-          </div>
-          <div class="card bg-green-400 text-black shadow-xl md:col-span-2">
+          <div class="card bg-green-400 text-black shadow-xl md:col-span-1">
             <div class="card-body text-center">
               <p class="text-2xl text-gray-700">Local Time</p>
-              <p class="text-4xl" id="localtime">Loading...</p>
+              <p class="text-2xl" id="localtime">Loading...</p>
             </div>
           </div>
-          <div class="card bg-green-600 text-white shadow-xl">
+          <div class="card bg-green-600 text-white shadow-xl md:col-span-2">
             <div class="card-body text-center">
               <p class="text-2xl text-gray-300">Time Zone</p>
-              <p class="text-4xl" id="tz_id">Loading...</p>
+              <p class="text-3xl" id="tz_id">Loading...</p>
             </div>
           </div>
         </div>
@@ -81,14 +78,9 @@
           </div>
           <div class="card bg-blue-700 text-white shadow-xl">
             <div class="card-body text-center flex">
-              <p class="text-3xl">Condition</p>
+              <p class="text-3xl text-gray-300">Condition</p>
               <div class="flex items-center" id="condition">
-                <img
-                  src="https://cdn.weatherapi.com/weather/64x64/day/113.png"
-                  alt=""
-                  height="72px"
-                  width="72px"
-                />
+                <img src="" alt="" height="72px" width="72px" />
                 <span class="text-4xl">Loading...</span>
               </div>
             </div>
@@ -129,7 +121,7 @@
           </div>
           <div class="card bg-red-700 text-white shadow-xl">
             <div class="card-body text-center flex">
-              <p class="text-3xl">Ozone</p>
+              <p class="text-3xl text-gray-300">Ozone</p>
               <div class="flex items-center" id="condition">
                 <p class="text-4xl" id="o3">Loading...</p>
               </div>
@@ -137,7 +129,7 @@
           </div>
           <div class="card bg-blue-700 text-black shadow-xl">
             <div class="card-body text-center">
-              <p class="text-2xl text-gray-200">Nitrogen dioxide</p>
+              <p class="text-2xl text-gray-300">Nitrogen dioxide</p>
               <p class="text-4xl text-white" id="no2">Loading...</p>
             </div>
           </div>
